@@ -94,14 +94,14 @@ bool Initialize()
 	colore[2] = 1.0;
 	colore[3] = 1.0;
 
-	std::vector<Point> centerPoints3D = createRandomPoints(10);
+	std::vector<Point> centerPoints3D = createRandomPoints(4);
 
 	Graph * tmpGraph = new Graph();
 	EnvInc testEnv = *new EnvInc(tmpGraph,centerPoints3D);
 	testEnv.initializeGraph();
 	testEnv.algo();
 	tmpFace = testEnv.getGraph()->getFaceList();
-
+	Graph::duplicateGraph(*testEnv.getGraph());
 	for (int i = 0; i < tmpFace->size(); i++)
 	{
 		tmpVectorPoints.push_back(tmpFace->at(i)->getPoints()[0]);
